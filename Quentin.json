@@ -1,0 +1,15 @@
+{
+    "id" : 1,
+    "nom" : "Tarantino",
+    "prenom" : "Quentin",
+    "annee" : 1963,
+    "film" : [{
+        "titre" : "Pulp Fiction",
+        "annee" : 1995
+    }],
+    "roles" : [{
+        "nomRole" : "Jimmy Dimmick",
+        "titre" : "Pulp Fiction",
+        "annee" : 1995
+    }]
+}
