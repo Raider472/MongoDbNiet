@@ -1,0 +1,23 @@
+{
+    "UE" : [{
+        "id" : 11,
+        "titre" : "Java",
+        "etudiants" : [{
+            "id" : 978,
+            "nom" : "Barnabe Dubois",
+            "note" : 12
+        }]
+    },{
+        "id" : 27,
+        "titre" : "Base de donnees",
+        "etudiants" : [{
+            "id" : 978,
+            "nom" : "Barnabe Dubois",
+            "note" : 17
+        },{
+            "id" : 476,
+            "nom" : "Vanesso Prado",
+            "note" : 10  
+        }]
+    }]
+}
