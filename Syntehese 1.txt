@@ -1,0 +1,48 @@
+1.
+db.getCollection("tourPedia_paris").find({category: "accommodation"})
+db.getCollection("tourPedia_paris").distinct("name", {"category":"accommodation"})
+
+2.
+db.getCollection("tourPedia_paris").distinct("category", {"reviews.rating":{$gte:4}})
+
+3.
+db.getCollection("tourPedia_paris").distinct("reviews.text", {"reviews.source": "Facebook"})
+db.getCollection("tourPedia_paris").find({"reviews.source": "Facebook"}, {"name":1, "reviews.text":1, "_id":0})
+
+4.
+db.getCollection("tourPedia_paris").find({"reviews.rating": {"$gte": 4, $not: {"$lt":4} }},{"name":1, "reviews.text":1, "_id":0})
+
+5.
+db.getCollection("tourPedia_paris").find({reviews: {$elemMatch: {rating: {$gt:3}, language: "fr"}}}, {"name":1, "reviews.language":1, "reviews.rating":1, "_id":0})
+
+6.
+db.getCollection("tourPedia_paris").find({"services": {$elemMatch:{$ne: [], $ne: null, $ne: ""}}}, {name:1,services:1})
+db.getCollection("tourPedia_paris").find({"services.0": {$exists: true, $ne : ""}}, {name: 1, services:1})
+
+7.
+db.getCollection("tourPedia_paris").find({"services": {$size: {$gt:4}}}, {name: 1, services:1})
+db.getCollection("tourPedia_paris").find({"services.4": {$exists: true, $ne : ""}}, {name: 1, services:1})
+
+8.
+db.getCollection("tourPedia_paris").find({"services": {$eq:"chambres non-fumeurs"}}, {name: 1, services:1}).sort({"_id":1})
+
+9.
+db.getCollection("tourPedia_paris").find({"services.0": {$eq:"chambres non-fumeurs"}}, {name: 1, services:1})
+
+10.
+db.getCollection("tourPedia_paris").find({"services":{$size:1}, "services.0": "chambres non-fumeurs"}, {name:1,services:1})
+
+11.
+db.getCollection("tourPedia_paris").find({"contact.phone": {$exists:true}, "contact.phone": {$ne:null}}, {name:1, "contact.phone":1})
+
+12.
+db.getCollection("tourPedia_paris").find({"contact.Foursquare": {$exists:true, $ne:null}, "contact.website": {$exists:true}}, {name:1, contact:1})
+
+13.
+db.getCollection("tourPedia_paris").find({name: {$in: [/Hotel/, /hotel/, /hôtel/, /Hôtel/]}}, {name:1})
+
+14.
+db.getCollection("tourPedia_paris").find({description:{$nin: [null, ""]}}, {name:1, description:1})
+
+15.
+db.getCollection("tourPedia_paris").find({category: "accommodation", services: {$in: ["blanchisserie"]}}, {name:1, "location.address":1})
