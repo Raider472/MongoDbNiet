@@ -33,7 +33,7 @@ db.getCollection("tourPedia_paris").find({"services.0": {$eq:"chambres non-fumeu
 db.getCollection("tourPedia_paris").find({"services":{$size:1}, "services.0": "chambres non-fumeurs"}, {name:1,services:1})
 
 11.
-db.getCollection("tourPedia_paris").find({"contact.phone": {$exists:true}, "contact.phone": {$ne:null}}, {name:1, "contact.phone":1})
+db.getCollection("tourPedia_paris").find({"contact.phone": {	$exists:true}, "contact.phone": {$ne:null}}, {name:1, "contact.phone":1})
 
 12.
 db.getCollection("tourPedia_paris").find({"contact.Foursquare": {$exists:true, $ne:null}, "contact.website": {$exists:true}}, {name:1, contact:1})
@@ -46,3 +46,15 @@ db.getCollection("tourPedia_paris").find({description:{$nin: [null, ""]}}, {name
 
 15.
 db.getCollection("tourPedia_paris").find({category: "accommodation", services: {$in: ["blanchisserie"]}}, {name:1, "location.address":1})
+
+16.
+db.getCollection("tourPedia_paris").find({"location.address":{$in: [/rue de Rome/, /Rue de Rome/, /rue de rome/, /Rue De Rome/]}}, {name:1, "location.coord":1,"location.address":1})
+
+17.
+db.getCollection("tourPedia_paris").distinct("category")
+
+18.
+db.getCollection("tourPedia_paris").distinct("reviews.source")
+
+19.
+db.getCollection("tourPedia_paris").distinct("services", {"services": {$nin: ["", null]}})
